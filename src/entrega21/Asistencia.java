@@ -24,22 +24,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Asistencia implements Serializable {
 
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
-
     public enum Opcion { SI, NO }
-    
     private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -88,7 +73,14 @@ public class Asistencia implements Serializable {
     public void setAsistencia(Evento asistencia) {
         this.asistencia = asistencia;
     }
-        
+    
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
