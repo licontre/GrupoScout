@@ -22,20 +22,6 @@ import javax.persistence.TemporalType;
 @Entity
 public class PagoCuota implements Serializable {
 
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
-
     private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,23 +39,33 @@ public class PagoCuota implements Serializable {
     public void setPagoscuota(Cuota n){
         this.pagoscuota = n;
     }    
+    
     public Usuario getUsuario(){
         return usuario;
     }
     public void setUsuario(Usuario n){
         this.usuario = n;
     }    
+    
     public Date getFecha(){
         return fecha;
     }
     public void setFecha(Date n){
         this.fecha = n;
     }
+    
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
     }
 
     @Override

@@ -40,9 +40,7 @@ public class Evento implements Serializable {
     private List<Comentario> comentarios;
     @OneToMany(mappedBy="asistencia")
     private List<Asistencia> asistencia;
-    @OneToMany(mappedBy="noteventos")
-    private List<NotificacionEvento> noteventos;
-    @ManyToMany(mappedBy="eventos")
+    @OneToMany(mappedBy="eventos")
     private List<Documento> documentos;
     
     public List<Documento> getDocumentos(){
@@ -64,14 +62,7 @@ public class Evento implements Serializable {
     }
     public void setAsistencia(List<Asistencia> n){
         this.asistencia = n;
-    }    
-    
-    public List<NotificacionEvento> getNoteventos(){
-        return noteventos;
-    }
-    public void setNoteventos(List<NotificacionEvento> n){
-        this.noteventos = n;
-    }    
+    }        
     
     public List<Seccion> getSecciones(){
         return secciones;

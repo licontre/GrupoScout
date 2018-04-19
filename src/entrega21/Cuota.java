@@ -20,19 +20,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Cuota implements Serializable {
 
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
 
     private static long serialVersionUID = 1L;
     @Id
@@ -50,7 +37,6 @@ public class Cuota implements Serializable {
     public void setCuotas(List<PagoCuota> n){
         this.cuotas = n;
     }
-    
     
     public float getImporte(){
         return importe;
@@ -78,6 +64,13 @@ public class Cuota implements Serializable {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
     }
 
     @Override

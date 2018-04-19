@@ -7,13 +7,13 @@
     <class>entrega21.Cuota</class>
     <class>entrega21.Documento</class>
     <class>entrega21.Evento</class>
-    <class>entrega21.FechaEntrada</class>
     <class>entrega21.NotificacionEstado</class>
     <class>entrega21.NotificacionEvento</class>
     <class>entrega21.PagoCuota</class>
     <class>entrega21.Seccion</class>
     <class>entrega21.Usuario</class>
     <class>entrega21.UsuarioMenor</class>
+    <class>entrega21.Historial</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

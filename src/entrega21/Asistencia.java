@@ -53,7 +53,7 @@ public class Asistencia implements Serializable {
     private Usuario usuario;
     @ManyToOne
     private Evento asistencia;
-    
+        
     public Usuario getUsuario(){
         return usuario;
     }
@@ -67,25 +67,28 @@ public class Asistencia implements Serializable {
     public void setObservacion (String n){
         this.observacion = n;
     }
+   
     public Date getFecha (){
         return fecha;
     }
     public void setFecha (Date n){
         this.fecha = n;
     }
+    
     public Long getId() {
         return id;
-    }
-    public Opcion getConfirmacion(){
-        return confirmacion;
-    }
-    public void setConfirmacion(Opcion n){
-        this.confirmacion = n;
     }
     public void setId(Long id) {
         this.id = id;
     }
 
+    public Evento getAsistencia() {
+        return asistencia;
+    }
+    public void setAsistencia(Evento asistencia) {
+        this.asistencia = asistencia;
+    }
+        
     @Override
     public int hashCode() {
         int hash = 0;
@@ -110,5 +113,5 @@ public class Asistencia implements Serializable {
     public String toString() {
         return "grupoScouts.Asistencia[ id=" + getId() + " ]";
     }
-    
+
 }

@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
  * @author root
  */
 @Entity
-public class FechaEntrada implements Serializable {
+public class Historial implements Serializable {
 
     /**
      * @return the serialVersionUID
@@ -42,32 +42,28 @@ public class FechaEntrada implements Serializable {
     private Long id;
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    private String seccion;
+    @ManyToOne
+    private Seccion seccion;
     @ManyToOne
     private Usuario fechatransicion;
     
-    public Usuario getUsuario(){
-        return fechatransicion;
-    }
-    public void setUsuario(Usuario n){
-        this.fechatransicion = n;
-    }    
     public Date getFecha(){
         return fecha;
     }
     public void setFecha(Date n){
         this.fecha = n;
     }
-    public String getSeccion(){
+    
+    public Seccion getSeccion(){
         return seccion;
     }
-    public void setSeccion(String n){
+    public void setSeccion(Seccion n){
         this.seccion = n;
     }
+   
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -82,10 +78,10 @@ public class FechaEntrada implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FechaEntrada)) {
+        if (!(object instanceof Historial)) {
             return false;
         }
-        FechaEntrada other = (FechaEntrada) object;
+        Historial other = (Historial) object;
         if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
             return false;
         }

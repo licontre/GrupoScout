@@ -14,6 +14,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -29,19 +30,9 @@ public class Usuario implements Serializable {
     private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    
-      public enum Sexo { HOMBRE , MUJER };
-private String nombreusuario;
+    private Long id;   
+    public enum Sexo { HOMBRE , MUJER };
+    private String nombreusuario;
     private String nombre;
     private String apellidos;
     private String dni;
@@ -57,31 +48,191 @@ private String nombreusuario;
     private String email;
     private String password;
     private String fotoperfil;
-    @OneToMany( mappedBy ="fechatransicion")
-    private List<FechaEntrada> fechatransicion;
-    @OneToMany( mappedBy ="usuario")
-    private List<PagoCuota> pagoscuota;
     @Temporal(TemporalType.DATE)
     private Date fechaentrada;
     @Temporal(TemporalType.DATE)
     private Date fechabaja;
-    @OneToMany( mappedBy="notificaciones")
-    private List<NotificacionEstado> notificaciones; 
+    @OneToMany( mappedBy ="fechatransicion")
+    private List<Historial> fechatransicion;
+    @OneToMany( mappedBy ="usuario")
+    private List<PagoCuota> pagoscuota;
+    @OneToMany(mappedBy="usuario")
+    private List<Comentario> comentarios;
+    @OneToMany(mappedBy="usuario")
+    private List<Asistencia> asistencias;
     @ManyToOne
-    private Seccion lista;
+    private Seccion lista;   
+    @ManyToMany
+    private List<Documento> documentos;
+   
     
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+   
+    public String getNombreusuario() {
+        return nombreusuario;
+    }
+    public void setNombreusuario(String nombreusuario) {
+        this.nombreusuario = nombreusuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public Date getFechanacimiento() {
+        return fechanacimiento;
+    }
+    public void setFechanacimiento(Date fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
+    }
+
+    public Sexo getGenero() {
+        return genero;
+    }
+    public void setGenero(Sexo genero) {
+        this.genero = genero;
+    }
+
+    public String getCalle() {
+        return calle;
+    }
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getCodigopostal() {
+        return codigopostal;
+    }
+    public void setCodigopostal(String codigopostal) {
+        this.codigopostal = codigopostal;
+    }
+
+    public String getLocalidad() {
+        return localidad;
+    }
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFotoperfil() {
+        return fotoperfil;
+    }
+    public void setFotoperfil(String fotoperfil) {
+        this.fotoperfil = fotoperfil;
+    }
+
+    public List<Historial> getFechatransicion() {
+        return fechatransicion;
+    }
+    public void setFechatransicion(List<Historial> fechatransicion) {
+        this.fechatransicion = fechatransicion;
+    }
+
+    public List<PagoCuota> getPagoscuota() {
+        return pagoscuota;
+    }
+    public void setPagoscuota(List<PagoCuota> pagoscuota) {
+        this.pagoscuota = pagoscuota;
+    }
+
+    public Date getFechaentrada() {
+        return fechaentrada;
+    }
+    public void setFechaentrada(Date fechaentrada) {
+        this.fechaentrada = fechaentrada;
+    }
+
+    public Date getFechabaja() {
+        return fechabaja;
+    }
+    public void setFechabaja(Date fechabaja) {
+        this.fechabaja = fechabaja;
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public Seccion getLista() {
+        return lista;
+    }
+    public void setLista(Seccion lista) {
+        this.lista = lista;
+    }
+
+    public List<Documento> getDocumentos() {
+        return documentos;
+    }
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
+    }
+     
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+       
+    public List<Asistencia> getAsistencias() {
+        return asistencias;
+    }
+    public void setAsistencias(List<Asistencia> asistencias) {
+        this.asistencias = asistencias;
+    }
+        
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
     
     @Override
     public int hashCode() {
@@ -107,299 +258,5 @@ private String nombreusuario;
     public String toString() {
         return "entrega21.Usuario[ id=" + getId() + " ]";
     }
-
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
-
-    /**
-     * @return the nombreusuario
-     */
-    public String getNombreusuario() {
-        return nombreusuario;
-    }
-
-    /**
-     * @param nombreusuario the nombreusuario to set
-     */
-    public void setNombreusuario(String nombreusuario) {
-        this.nombreusuario = nombreusuario;
-    }
-
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
-     * @return the apellidos
-     */
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    /**
-     * @param apellidos the apellidos to set
-     */
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    /**
-     * @return the dni
-     */
-    public String getDni() {
-        return dni;
-    }
-
-    /**
-     * @param dni the dni to set
-     */
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    /**
-     * @return the fechanacimiento
-     */
-    public Date getFechanacimiento() {
-        return fechanacimiento;
-    }
-
-    /**
-     * @param fechanacimiento the fechanacimiento to set
-     */
-    public void setFechanacimiento(Date fechanacimiento) {
-        this.fechanacimiento = fechanacimiento;
-    }
-
-    /**
-     * @return the genero
-     */
-    public Sexo getGenero() {
-        return genero;
-    }
-
-    /**
-     * @param genero the genero to set
-     */
-    public void setGenero(Sexo genero) {
-        this.genero = genero;
-    }
-
-    /**
-     * @return the calle
-     */
-    public String getCalle() {
-        return calle;
-    }
-
-    /**
-     * @param calle the calle to set
-     */
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    /**
-     * @return the codigopostal
-     */
-    public String getCodigopostal() {
-        return codigopostal;
-    }
-
-    /**
-     * @param codigopostal the codigopostal to set
-     */
-    public void setCodigopostal(String codigopostal) {
-        this.codigopostal = codigopostal;
-    }
-
-    /**
-     * @return the localidad
-     */
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    /**
-     * @param localidad the localidad to set
-     */
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    /**
-     * @return the provincia
-     */
-    public String getProvincia() {
-        return provincia;
-    }
-
-    /**
-     * @param provincia the provincia to set
-     */
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    /**
-     * @return the cargo
-     */
-    public String getCargo() {
-        return cargo;
-    }
-
-    /**
-     * @param cargo the cargo to set
-     */
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * @return the fotoperfil
-     */
-    public String getFotoperfil() {
-        return fotoperfil;
-    }
-
-    /**
-     * @param fotoperfil the fotoperfil to set
-     */
-    public void setFotoperfil(String fotoperfil) {
-        this.fotoperfil = fotoperfil;
-    }
-
-    /**
-     * @return the fechatransicion
-     */
-    public List<FechaEntrada> getFechatransicion() {
-        return fechatransicion;
-    }
-
-    /**
-     * @param fechatransicion the fechatransicion to set
-     */
-    public void setFechatransicion(List<FechaEntrada> fechatransicion) {
-        this.fechatransicion = fechatransicion;
-    }
-
-    /**
-     * @return the pagoscuota
-     */
-    public List<PagoCuota> getPagoscuota() {
-        return pagoscuota;
-    }
-
-    /**
-     * @param pagoscuota the pagoscuota to set
-     */
-    public void setPagoscuota(List<PagoCuota> pagoscuota) {
-        this.pagoscuota = pagoscuota;
-    }
-
-    /**
-     * @return the fechaentrada
-     */
-    public Date getFechaentrada() {
-        return fechaentrada;
-    }
-
-    /**
-     * @param fechaentrada the fechaentrada to set
-     */
-    public void setFechaentrada(Date fechaentrada) {
-        this.fechaentrada = fechaentrada;
-    }
-
-    /**
-     * @return the fechabaja
-     */
-    public Date getFechabaja() {
-        return fechabaja;
-    }
-
-    /**
-     * @param fechabaja the fechabaja to set
-     */
-    public void setFechabaja(Date fechabaja) {
-        this.fechabaja = fechabaja;
-    }
-
-    /**
-     * @return the notificaciones
-     */
-    public List<NotificacionEstado> getNotificaciones() {
-        return notificaciones;
-    }
-
-    /**
-     * @param notificaciones the notificaciones to set
-     */
-    public void setNotificaciones(List<NotificacionEstado> notificaciones) {
-        this.notificaciones = notificaciones;
-    }
-
-    /**
-     * @return the lista
-     */
-    public Seccion getLista() {
-        return lista;
-    }
-
-    /**
-     * @param lista the lista to set
-     */
-    public void setLista(Seccion lista) {
-        this.lista = lista;
-    }
-    
+ 
 }

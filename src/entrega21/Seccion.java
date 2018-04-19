@@ -30,46 +30,67 @@ public class Seccion implements Serializable {
     private int edadmaxima;
     @OneToMany(mappedBy="lista")
     private List<Usuario> lista;
+    @OneToMany(mappedBy="seccion")
+    private List<Historial> historial;
     @ManyToMany
-    private List<Evento> eventos;
+    private List<Evento> eventos;    
     
     public List<Evento> getEventos(){
         return eventos;
     }
-    public void setEvento(List<Evento> n){
-        this.setEventos(n);
+    public void setEventos(List<Evento> n){
+        this.eventos=n;
     }
+    
     public List<Usuario> getLista(){
         return lista;
     }
     public void setLista(List<Usuario> n){
         this.lista = n;
     }
+    
     public int getEdadminima(){
         return edadminima;
     }
     public void setEdadminima(int n){
         this.edadminima = n;
     }
+    
     public int getEdadmaxima(){
         return edadmaxima;
     }
     public void setEdadmaxima(int n){
         this.edadmaxima = n;
     }
+    
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
+    
     public String getNombre (){
         return nombre;
     }
     public void setNombre (String n){
         this.nombre = n;
     }
-
+ 
+    public List<Historial> getHistorial() {
+        return historial;
+    }
+    public void setHistorial(List<Historial> historial) {
+        this.historial = historial;
+    }
+    
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -93,27 +114,6 @@ public class Seccion implements Serializable {
     @Override
     public String toString() {
         return "grupoScouts.Seccion[ id=" + getId() + " ]";
-    }
-
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
-
-    /**
-     * @param eventos the eventos to set
-     */
-    public void setEventos(List<Evento> eventos) {
-        this.eventos = eventos;
     }
     
 }

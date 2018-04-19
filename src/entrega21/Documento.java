@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,20 +22,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Documento implements Serializable {
 
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
-
     private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,69 +30,67 @@ public class Documento implements Serializable {
     private String estado;
     private String copiadocumento;
     private String tipo;
-    private String ruta;
-    private int numvisualizaciones;
-    @OneToMany( mappedBy="registro")
-    private List<NotificacionEstado> registro;
-    @ManyToMany
-    private List<Evento> eventos;
+    @ManyToOne
+    private Evento eventos;
+    @ManyToMany(mappedBy="documentos")
+    private List<Usuario> usuarios;
     
-    public void setEventos(List<Evento> e){
+    public void setEventos(Evento e){
         this.eventos = e;
     }
-    public List<Evento> getEventos(){
+    public Evento getEventos(){
         return eventos;
     }
-    public void setRegistro(List<NotificacionEstado> n){
-        this.registro = n;
-    }
-    public List<NotificacionEstado> getRegistro(){
-        return registro;
-    }    
-    public int getNumvisualizaciones(){
-        return numvisualizaciones;
-    }
-    public void setNumvisualizaciones(int n){
-        this.numvisualizaciones = n;
-    }
+        
     public String getNombre (){
         return nombre;
     }
     public void setNombre (String n){
         this.nombre = n;
     }
+    
     public String getEstado (){
         return estado;
     }
     public void setEstado (String n){
         this.estado = n;
     }
+    
     public String getCopiadocumento (){
         return copiadocumento;
     }
     public void setCopiadocumento (String n){
         this.copiadocumento = n;
     }
+    
     public String getTipo (){
         return tipo;
     }
     public void setTipo (String n){
         this.tipo = n;
     }
-    public String getRuta (){
-        return ruta;
-    }
-    public void setRuta (String n){
-        this.ruta = n;
-    }
+    
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+   
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -130,5 +115,5 @@ public class Documento implements Serializable {
     public String toString() {
         return "grupoScouts.Documento[ id=" + getId() + " ]";
     }
-    
+
 }
