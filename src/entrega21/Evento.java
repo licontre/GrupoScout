@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entrega21;
 
 import java.io.Serializable;
@@ -17,10 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author root
- */
+
 @Entity
 public class Evento implements Serializable {
 
@@ -112,6 +104,13 @@ public class Evento implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
 
     @Override
     public int hashCode() {
@@ -122,7 +121,7 @@ public class Evento implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        
         if (!(object instanceof Evento)) {
             return false;
         }
@@ -136,20 +135,6 @@ public class Evento implements Serializable {
     @Override
     public String toString() {
         return "grupoScouts.Evento[ id=" + getId() + " ]";
-    }
-
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
     }
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entrega21;
 
 import java.io.Serializable;
@@ -15,10 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author root
- */
+
 @Entity
 public class Comentario implements Serializable {
 
@@ -61,7 +53,14 @@ public class Comentario implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
+    public Evento getComentarios() {
+        return comentarios;
+    }
+    public void setComentarios(Evento comentarios) {
+        this.comentarios = comentarios;
+    }
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -78,7 +77,7 @@ public class Comentario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        
         if (!(object instanceof Comentario)) {
             return false;
         }
@@ -92,20 +91,6 @@ public class Comentario implements Serializable {
     @Override
     public String toString() {
         return "grupoScouts.Comentario[ id=" + getId() + " ]";
-    }
-
-    /**
-     * @return the comentarios
-     */
-    public Evento getComentarios() {
-        return comentarios;
-    }
-
-    /**
-     * @param comentarios the comentarios to set
-     */
-    public void setComentarios(Evento comentarios) {
-        this.comentarios = comentarios;
     }
     
 }

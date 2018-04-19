@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entrega21;
 
 import java.io.Serializable;
@@ -15,26 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author root
- */
+
 @Entity
 public class Historial implements Serializable {
-
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    /**
-     * @param aSerialVersionUID the serialVersionUID to set
-     */
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
-    }
 
     private static long serialVersionUID = 1L;
     @Id
@@ -68,6 +46,14 @@ public class Historial implements Serializable {
         this.id = id;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -77,7 +63,7 @@ public class Historial implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        
         if (!(object instanceof Historial)) {
             return false;
         }
